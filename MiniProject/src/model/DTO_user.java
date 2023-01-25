@@ -65,7 +65,4 @@ public class DTO_user {
 	public void setMax(int max) {
 		this.max = max;
 	}
-	
-	
-	
 }
