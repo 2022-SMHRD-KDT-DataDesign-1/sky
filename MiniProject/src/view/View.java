@@ -1,7 +1,9 @@
 package view;
 
 import java.util.Scanner;
+
 import controller.Controller;
+import model.DTO_user;
 
 
 public class View {
@@ -20,20 +22,29 @@ public class View {
 				String id = sc.next();
 				System.out.print("PW를 입력해주세요 >> ");
 				String pw = sc.next();
+				DTO_user dto = new DTO_user(id,pw);
+				ct.login(dto);
 				
-				break;
+//				break;
 			}else if(select == 2) {
 				System.out.print("ID를 입력하세요 >> ");
 				String id = sc.next();
+				System.out.print("PW를 입력하세요 >> ");
+				String pw = sc.next();
+				System.out.print("닉네임을 입력하세요 >> ");
+				String name = sc.next();
+				
+				DTO_user dto = new DTO_user(id,pw,name);
+				ct.join(dto);
 				/*
 				System.out.print("닉네임을 입력하세요 >> ");
 				String name = sc.next();
 				System.out.print("PW 입력하세요 >> ");
 				String pw = sc.next();
 				*/
-				break;
 			}else {
 				System.out.println("잘못입력하셨습니다. 다시 입력해주십시오.");
+				break;
 			}
 		}
 		
@@ -53,8 +64,6 @@ public class View {
 				System.out.println("잘못입력하셨습니다. 다시 입력해주십시오.");
 			}
 		}
-		
-
 	}
 
 }
