@@ -53,9 +53,13 @@ public class View {
 			int select = sc.nextInt();
 			
 			if(select == 1) {
+				// 장르 선택
+				
+				// 난이도 선택
 				
 				
 			}else if(select == 2) {
+				// 랭킹 확인
 				
 			}else if(select == 3) {
 				System.out.println("게임이 종료되었습니다. 감사합니다");
