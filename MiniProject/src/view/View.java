@@ -43,8 +43,11 @@ public class View {
 			
 			if(select == 1) {
 				// 장르 선택
-				
+				System.out.print("[1]발라드 [2]댄스 [3]동요 [4]POP >> ");
+				int genre = sc.nextInt();
 				// 난이도 선택
+				System.out.print("[1]25 [2]50 [3]75 [4]100 >> ");
+				int level = sc.nextInt();
 				
 				
 			}else if(select == 2) {
