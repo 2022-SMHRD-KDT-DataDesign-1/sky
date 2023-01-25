@@ -25,7 +25,7 @@ public class View {
 				DTO_user dto = new DTO_user(id,pw);
 				ct.login(dto);
 				
-//				break;
+				break;
 			}else if(select == 2) {
 				System.out.print("ID를 입력하세요 >> ");
 				String id = sc.next();
@@ -44,7 +44,7 @@ public class View {
 				*/
 			}else {
 				System.out.println("잘못입력하셨습니다. 다시 입력해주십시오.");
-				break;
+//				break;
 			}
 		}
 		

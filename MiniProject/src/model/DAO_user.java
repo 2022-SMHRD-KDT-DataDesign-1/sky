@@ -71,11 +71,13 @@ public class DAO_user {
 			psmt.setString(1, dto.getId());
 			psmt.setString(2, dto.getPw());
 			psmt.setString(3, dto.getName());
+			
 			row = psmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(dto.getId()+"는 이미 있는 ID입니다.");
+			System.out.println("ID가 중복되었습니다.");
 			e.printStackTrace();
-		}finally {
+		}	
+		finally {
 			getClose();
 		}
 		return row;
