@@ -48,13 +48,15 @@ public class View {
 			}
 		}
 		
+		int gameCnt = 0;
 		while(true) {
 			System.out.print("[1]게임시작 [2]랭킹확인 [3]게임종료 >> "); 
 			int select = sc.nextInt();
 			
 			if(select == 1) {
 				// 장르 선택
-				while (true) {					
+				while (true) {
+					
 					System.out.print("[1]발라드 [2]댄스 [3]동요 [4]POP >> ");
 					int type1 = sc.nextInt();
 					
@@ -64,16 +66,21 @@ public class View {
 					DTO_sing dto = new DTO_sing(type1, point1);
 					int cnt = ct.musicQuiz(dto);
 					
-					if(cnt == 1) {
-						break;
+					if(cnt == 1) { // 입력값이 맞을 때
+						System.out.print("정답을 입력하세요 (Hint: 1004 입력) >> ");
+						String title = sc.next();
+						DTO_sing dto2 = new DTO_sing(title);
+						ct.musicCheck(dto2);
+						gameCnt++;
 					}else {
 						continue;
 					}
+					if(gameCnt > 2) {
+						System.out.println("GAME OVER");
+						break;
+					}
+					
 				}
-				System.out.print("정답을 입력하세요 (Hint: 1004 입력) >> ");
-				String title = sc.next();
-				DTO_sing dto = new DTO_sing(title);
-				ct.musicCheck(dto);
 				
 				
 				

@@ -73,18 +73,19 @@ public class Controller {
 	}
 	
 	// 정답 확인
-	public void musicCheck(DTO_sing dto) {
+	public void musicCheck(DTO_sing dto2) {
 		if (mp3.isPlaying() == true) {
 			mp3.stop();
 		}
 		
-		if(answer.equals(dto.getTitle())) {
+		if(answer.equals(dto2.getTitle())) {
 			System.out.println("정답입니다.");
 			myScore += score;
 		}else {
 			System.out.println("땡");
 			myScore -= score;
 		}
+		System.out.println("[나의 점수] " + myScore);
 		
 		
 		
