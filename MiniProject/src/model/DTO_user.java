@@ -15,6 +15,16 @@ public class DTO_user {
 		this.score = score;
 		this.max = max;
 	}
+	public DTO_user(String id, String pw, String name) {
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+	}
+
+	public DTO_user(String id, String pw) {
+		this.id = id;
+		this.pw = pw;
+	}
 
 	public String getId() {
 		return id;
@@ -55,7 +65,4 @@ public class DTO_user {
 	public void setMax(int max) {
 		this.max = max;
 	}
-	
-	
-	
 }
