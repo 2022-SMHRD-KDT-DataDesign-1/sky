@@ -93,7 +93,12 @@ public class Controller {
 	}
 
 	// 정답 확인
+	int n = 1;
 	public int musicCheck(DTO_sing dto2) {
+		if(n>3) {
+			myScore = 0;
+			n = 1;
+		}
 		if (mp3.isPlaying()) {
 			if (answer.equals(dto2.getTitle())) {
 				System.out.println("점수 두배 획득");
@@ -119,7 +124,7 @@ public class Controller {
 				musicEffect(0);
 			}
 		}
-
+		n++;
 		return myScore;
 
 	}

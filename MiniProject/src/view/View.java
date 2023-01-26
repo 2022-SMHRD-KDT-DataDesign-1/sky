@@ -86,9 +86,7 @@ public class View {
 							System.out.print("정답을 입력하세요 >> ");
 							String title2 = sc.next();
 							DTO_sing dto2 = new DTO_sing(title2);
-							if(mp3.isPlaying()) {						
-								mp3.stop();
-							}
+
 							System.out.println("[나의 점수]: " + ct.musicCheck(dto2)); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
@@ -97,9 +95,7 @@ public class View {
 							
 						}else {							
 							DTO_sing dto2 = new DTO_sing(title);
-							if(mp3.isPlaying()) {						
-								mp3.stop();
-							}
+
 							System.out.println("[나의 점수]: " + ct.musicCheck(dto2)); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
