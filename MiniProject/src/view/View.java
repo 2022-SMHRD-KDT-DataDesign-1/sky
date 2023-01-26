@@ -107,6 +107,7 @@ public class View {
 					}
 					
 					if(gameCnt > 2) {
+						
 						System.out.println("기회 소진! GAME OVER ~~");
 						break;
 					}
