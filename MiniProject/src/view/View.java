@@ -48,7 +48,7 @@ public class View {
 			}
 		}
 		
-		int gameCnt = 0;
+		int gameCnt = 0; // 게임 횟수
 		while(true) {
 			System.out.print("[1]게임시작 [2]랭킹확인 [3]게임종료 >> "); 
 			int select = sc.nextInt();
@@ -71,28 +71,28 @@ public class View {
 					System.out.print("[25] [50] [75] [100] >> ");
 					int point1 = sc.nextInt();
 					DTO_sing dto = new DTO_sing(type1, point1);
-					int cnt = ct.musicQuiz(dto);
+					int cnt = ct.musicQuiz(dto); // 음악 퀴즈 재생
 					
 					if(cnt == 1) { // 입력값이 맞을 때
 						System.out.print("정답을 입력하세요 (Hint: 1004 입력) >> ");
 						String title = sc.next();
 						if(title.equals("1004")) {
-							ct.hint1004();
+							ct.hint1004(); // 1004 hint 기능
 							System.out.print("정답을 입력하세요 >> ");
 							String title2 = sc.next();
 							DTO_sing dto2 = new DTO_sing(title2);
-							ct.musicCheck(dto2);
+							ct.musicCheck(dto2); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
-							ct.heart(dto3);
+							ct.heart(dto3); // 잔여 게임 횟수
 							System.out.println("--------------------------------------------------------");
 							
 						}else {							
 							DTO_sing dto2 = new DTO_sing(title);
-							ct.musicCheck(dto2);
+							ct.musicCheck(dto2); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
-							ct.heart(dto3);
+							ct.heart(dto3); // 잔여 게임 횟수
 							System.out.println("--------------------------------------------------------");
 						}
 					}else {
