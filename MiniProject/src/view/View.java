@@ -24,9 +24,14 @@ public class View {
 				System.out.print("PW를 입력해주세요 >> ");
 				String pw = sc.next();
 				DTO_user dto = new DTO_user(id,pw);
-				ct.login(dto);
+				int cnt = ct.login(dto);
 				
-				break;
+				if(cnt == 1) {
+					break;
+				}else {
+					continue;
+				}
+				
 			}else if(select == 2) {
 				System.out.print("ID를 입력하세요 >> ");
 				String id = sc.next();

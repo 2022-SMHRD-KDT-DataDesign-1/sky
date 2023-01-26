@@ -8,16 +8,19 @@ import model.DTO_user;
 public class Controller {
 	DAO_user dao_user = new DAO_user();
 	DAO_sing dao_sing = new DAO_sing();
-	
-		public void login(DTO_user dto) {
+
+
+		public int login(DTO_user dto) {
 		
 		boolean res = dao_user.login(dto);
 		// res : true :로그인 성공
 		// res : false : 로그인 실패
 		if(res) {
 			System.out.println("로그인 성공!");
+			return 1;
 		}else {
 			System.out.println("아이디나 비밀번호가 다릅니다.");
+			return 0;
 		}
 		
 	}
