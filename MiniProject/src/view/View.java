@@ -69,6 +69,9 @@ public class View {
 				
 				ct.musicQuiz(dto);
 				
+				System.out.println("정답을 입력하세요>> ");
+				String title = sc.next();
+				
 				
 			}else if(select == 2) {
 				// 랭킹 확인
