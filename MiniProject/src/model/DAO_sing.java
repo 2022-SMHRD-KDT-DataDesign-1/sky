@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAO_sing {
 	
@@ -48,7 +49,7 @@ public class DAO_sing {
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setInt(1, dto.getType1());
-			psmt.setInt(2, dto.getPoint1());
+			psmt.setInt(2, dto.getPoint1()*25);
 			
 			rs = psmt.executeQuery();
 			
@@ -71,6 +72,32 @@ public class DAO_sing {
 
 		}
 		return dto;
+		
+		
+	}
+	// 효과음 재생
+	public ArrayList<String> playEffect() {
+		ArrayList<String> list = new ArrayList<>();
+		getCon();
+		
+		try {
+			String sql = "select * from sing_info where singer is null";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				list.add(rs.getString("file1"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			getClose();
+
+		}
+		return list;
+		
 		
 		
 	}

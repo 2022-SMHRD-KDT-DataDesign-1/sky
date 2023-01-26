@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.Controller;
+import javazoom.jl.player.MP3Player;
 import model.DTO_sing;
 import model.DTO_user;
 
@@ -13,6 +14,7 @@ public class View {
 		
 		Scanner sc = new Scanner(System.in);
 		Controller ct = new Controller();
+		MP3Player mp3 = new MP3Player();
 		
 		while(true) {
 			System.out.print("[1]로그인 [2]회원가입 >> "); 
@@ -55,6 +57,7 @@ public class View {
 			
 			if(select == 1) {
 				// 게임 설명
+				ct.musicEffect(1);
 				System.out.println("============================게임설명===========================");
 				System.out.println(" ① 게임은 3회동안 진행됩니다.\n ② 0점에서 시작하여 선택한 난이도만큼 승리시 점수획득하며 실패시 점수가 줄어들게됩니다.\n"
 						+ " ③ 노래가 재생되는 10초이내 정답입력시 난이도의 2배 점수를 획득합니다.\n④ 정답입력시 띄어쓰기는 불가하며 영어는 소문자만 가능합니다.\n"
@@ -67,11 +70,13 @@ public class View {
 					int type1 = sc.nextInt();
 					
 					// 난이도 선택
-					System.out.println("장르를 선택하세요 [25]~[100]");
-					System.out.print("[25] [50] [75] [100] >> ");
+					System.out.println("난이도를 선택하세요 [1]~[4]");
+
+					System.out.print("[1]25 [2]50 [3]75 [4]100 >> ");
 					int point1 = sc.nextInt();
 					DTO_sing dto = new DTO_sing(type1, point1);
 					int cnt = ct.musicQuiz(dto); // 음악 퀴즈 재생
+					
 					
 					if(cnt == 1) { // 입력값이 맞을 때
 						System.out.print("정답을 입력하세요 (Hint: 1004 입력) >> ");
@@ -81,6 +86,9 @@ public class View {
 							System.out.print("정답을 입력하세요 >> ");
 							String title2 = sc.next();
 							DTO_sing dto2 = new DTO_sing(title2);
+							if(mp3.isPlaying()) {						
+								mp3.stop();
+							}
 							System.out.println("[나의 점수]: " + ct.musicCheck(dto2)); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
@@ -89,6 +97,9 @@ public class View {
 							
 						}else {							
 							DTO_sing dto2 = new DTO_sing(title);
+							if(mp3.isPlaying()) {						
+								mp3.stop();
+							}
 							System.out.println("[나의 점수]: " + ct.musicCheck(dto2)); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
@@ -98,6 +109,7 @@ public class View {
 					}else {
 						continue;
 					}
+					
 					if(gameCnt > 2) {
 						System.out.println("기회 소진! GAME OVER ~~");
 						break;
