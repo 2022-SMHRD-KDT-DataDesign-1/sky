@@ -9,6 +9,16 @@ public class DTO_sing {
 	private int point1;
 	private String hint;
 	
+	private int gameCnt;
+	
+	public DTO_sing(int gameCnt) {
+		this.gameCnt = gameCnt;
+	}
+
+	public int getGameCnt() {
+		return gameCnt;
+	}
+
 	public DTO_sing(String title, String singer, String file1, int type1, int point1, String hint) {
 		super();
 		this.title = title;
