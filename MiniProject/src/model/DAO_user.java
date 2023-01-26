@@ -62,7 +62,7 @@ public class DAO_user {
 	
 	public int join(DTO_user dto) {
 		int row = 0;
-		boolean rse = false;
+		
 		getCon();
 		try {
 			String sql = "insert into user_info (id, pw, name)"
@@ -75,7 +75,7 @@ public class DAO_user {
 			row = psmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("ID가 중복되었습니다.");
-			e.printStackTrace();
+//			e.printStackTrace();
 		}	
 		finally {
 			getClose();
