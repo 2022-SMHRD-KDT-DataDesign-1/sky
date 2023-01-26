@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Random;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -44,11 +46,15 @@ public class Controller {
 	String answer = null;
 	int score = 0;
 	int myScore = 0; // 나의 점수 (누적)
+	String file1 = null;
+	String singer = null;
 
 	public int musicQuiz(DTO_sing dto) {
 		DTO_sing dto2 = dao_sing.musicQuiz(dto);
 		answer = dto2.getTitle();
 		score = dto2.getPoint1();
+		file1 = dto2.getFile1();
+		singer = dto2.getSinger();
 
 		if (dto2.getTitle() == null) {
 			System.out.println("다시 입력해주세요.");
@@ -66,11 +72,16 @@ public class Controller {
 				}
 
 			};
-			timer.schedule(task, 3000);
+			timer.schedule(task, 1500);
 
 			return 1;
 		}
 	}
+	
+	
+	
+	
+	
 
 	// 정답 확인
 	public void musicCheck(DTO_sing dto2) {
@@ -99,10 +110,124 @@ public class Controller {
 		System.out.println("[나의 점수] " + myScore);
 
 	}
-
-	public void heart(int gameCnt) {
+	// 게임 기회 확인
+	public void heart(DTO_sing dto3) {
 		String heart = "♡♡♡";
-		System.out.println("남은 기회: " + heart.substring(0, 3 - gameCnt));
+		System.out.println("남은 기회: " + heart.substring(0, 3 - dto3.getGameCnt()));
 	}
+	
+	// 1004 가위바위보 힌트 게임
+	public void hint1004() {
+		
+		if (mp3.isPlaying() == true) {
+			mp3.stop();
+		}
+			
+	      Scanner sc = new Scanner(System.in);
+	      Random rd = new Random();
+	      String [] arr = {"주먹", "가위","보"};
+	      
+	      int cnt = 0;
+	      while(true) {
+	            System.out.println("================[가위바위보 미니 게임]=================");
+	            System.out.println("[주먹] [가위] [보]");
+	            System.out.print("[주먹] [가위] [보] 중 하나를 입력하세요 :");
+	            
+	            String com = arr[rd.nextInt(3)];
+	            String user = sc.next();            
+	            
+	            System.out.print("컴퓨터 ["+ com + "]" + "VS 유저 ["+user+"]");
+	            
+	            
+	            
+	            if(user.equals("주먹")) {
+	               
+	               if(com.equals("가위")) {
+	                  System.out.println("<승리>");
+	                  System.out.println("추가 힌트 획득! >>> "+ singer);
+	                  break;
+	               }
+	               else if(com.equals("보")) {
+	                  System.out.println("<패배>");
+	                  System.out.println("\n아쉬워요!");
+	                  break;
+	               }else {
+//	                  if(cnt==1) {
+//	                	  break;
+//	                  }
+//	                  cnt++;
+	            	   System.out.println("<무승부>");
+	                  System.out.println("\n다시 한번 더!");
+	               }
+	            }
+	            else if(user.equals("가위")) {
+	               
+	               if(com.equals("가위")) {
+//	            	   if(cnt==1) {
+//		                	  break;
+//		                  }
+//		                  cnt++;
+	                  System.out.println("<무승부>");
+	                  System.out.println("\n다시 한번 더!");
+
+	               }
+	               else if(com.equals("보")) {
+	                  System.out.println("<승리>");
+	                  System.out.println("추가 힌트 획득! >>> "+ singer);
+
+	                  break;
+	               }
+	               else {
+	                  System.out.println("<패배>");
+	                  System.out.println("\n아쉬워요!");
+
+	                  break;
+	               }
+	            }
+	            else if(user.equals("보")) {
+	               if(com.equals("가위")) {
+	                  System.out.println("<패배>");
+	                  System.out.println("\n아쉬워요!");
+
+	                  break;
+	               }
+	               else if(com.equals("보")) {
+//	            	   if(cnt==1) {
+//		                	  break;
+//		                  }
+//		                  cnt++;
+	                  System.out.println("<무승부>");
+	                  System.out.println("\n다시 한번 더!");
+
+	               }
+	               else {
+	                  System.out.println("<승리>");
+	                  System.out.println("추가 힌트 획득! >>> "+ singer);
+
+	                  break;
+	               }
+	            }
+	            else {
+	               System.out.println("X==[주먹 가위 보 중에 골라주세요]==X");
+	            }
+	         }
+	      
+	      Timer timer = new Timer();
+	  	TimerTask task = new TimerTask() {
+
+	  		@Override
+	  		public void run() {
+	  			mp3.play(file1);
+	  				
+	  		}
+
+	  	};
+	  	timer.schedule(task, 1500);
+		
+		
+	}
+	
+	
+	
 
 }

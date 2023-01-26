@@ -75,11 +75,25 @@ public class View {
 					if(cnt == 1) { // 입력값이 맞을 때
 						System.out.print("정답을 입력하세요 (Hint: 1004 입력) >> ");
 						String title = sc.next();
-						DTO_sing dto2 = new DTO_sing(title);
-						ct.musicCheck(dto2);
-						gameCnt++;
-						ct.heart(gameCnt);
-						System.out.println("--------------------------------------------------------");
+						if(title.equals("1004")) {
+							ct.hint1004();
+							System.out.print("정답을 입력하세요 >> ");
+							String title2 = sc.next();
+							DTO_sing dto2 = new DTO_sing(title2);
+							ct.musicCheck(dto2);
+							gameCnt++;
+							DTO_sing dto3 = new DTO_sing(gameCnt);
+							ct.heart(dto3);
+							System.out.println("--------------------------------------------------------");
+							
+						}else {							
+							DTO_sing dto2 = new DTO_sing(title);
+							ct.musicCheck(dto2);
+							gameCnt++;
+							DTO_sing dto3 = new DTO_sing(gameCnt);
+							ct.heart(dto3);
+							System.out.println("--------------------------------------------------------");
+						}
 					}else {
 						continue;
 					}
