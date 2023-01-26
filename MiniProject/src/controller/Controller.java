@@ -72,19 +72,14 @@ public class Controller {
 				}
 
 			};
-			timer.schedule(task, 1500);
+			timer.schedule(task, 1000);
 
 			return 1;
 		}
 	}
 	
-	
-	
-	
-	
-
 	// 정답 확인
-	public void musicCheck(DTO_sing dto2) {
+	public int musicCheck(DTO_sing dto2) {
 		if (mp3.isPlaying() == true) {
 			if(answer.equals(dto2.getTitle())){				
 				System.out.println("점수 두배 획득");
@@ -107,7 +102,7 @@ public class Controller {
 			}
 		}
 
-		System.out.println("[나의 점수] " + myScore);
+		return myScore;
 
 	}
 	// 게임 기회 확인
@@ -131,7 +126,7 @@ public class Controller {
 	      while(true) {
 	            System.out.println("================[가위바위보 미니 게임]=================");
 	            System.out.println("[주먹] [가위] [보]");
-	            System.out.print("[주먹] [가위] [보] 중 하나를 입력하세요 :");
+	            System.out.print("[주먹] [가위] [보] 중 하나를 입력하세요 : ");
 	            
 	            String com = arr[rd.nextInt(3)];
 	            String user = sc.next();            
@@ -222,7 +217,7 @@ public class Controller {
 	  		}
 
 	  	};
-	  	timer.schedule(task, 1500);
+	  	timer.schedule(task, 1000);
 		
 		
 	}
