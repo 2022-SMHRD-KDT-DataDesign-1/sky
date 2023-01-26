@@ -42,15 +42,9 @@ public class View {
 				
 				DTO_user dto = new DTO_user(id,pw,name);
 				ct.join(dto);
-				/*
-				System.out.print("닉네임을 입력하세요 >> ");
-				String name = sc.next();
-				System.out.print("PW 입력하세요 >> ");
-				String pw = sc.next();
-				*/
+
 			}else {
 				System.out.println("잘못입력하셨습니다. 다시 입력해주십시오.");
-//				break;
 			}
 		}
 		
