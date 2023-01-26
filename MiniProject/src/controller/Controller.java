@@ -42,13 +42,17 @@ public class Controller {
 	// 음악 퀴즈
 	MP3Player mp3 = new MP3Player();
 	String answer = null;
+	int score = 0;
+	int myScore = 0; // 나의 점수 (누적)
 
-	public void musicQuiz(DTO_sing dto) {
+	public int musicQuiz(DTO_sing dto) {
 		DTO_sing dto2 = dao_sing.musicQuiz(dto);
 		answer = dto2.getTitle();
+		score = dto2.getPoint1();
 
-		if (dto2 == null) {
+		if (dto2.getTitle() ==  null) {
 			System.out.println("다시 입력해주세요.");
+			return 0;
 		} else {
 			System.out.println("힌트: " + dto2.getHint());
 
@@ -63,15 +67,25 @@ public class Controller {
 
 			};
 			timer.schedule(task, 3000);
-
+			
+			return 1;
 		}
 	}
 	
 	// 정답 확인
-	public void musicCheck(DTO_sing dto2) {
+	public void musicCheck(DTO_sing dto) {
 		if (mp3.isPlaying() == true) {
 			mp3.stop();
 		}
+		
+		if(answer.equals(dto.getTitle())) {
+			System.out.println("정답입니다.");
+			myScore += score;
+		}else {
+			System.out.println("땡");
+			myScore -= score;
+		}
+		
 		
 		
 	}

@@ -54,19 +54,27 @@ public class View {
 			
 			if(select == 1) {
 				// 장르 선택
-				System.out.print("[1]발라드 [2]댄스 [3]동요 [4]POP >> ");
-				int type1 = sc.nextInt();
-				// 난이도 선택
-				System.out.print("[25] [50] [75] [100] >> ");
-				int point1 = sc.nextInt();
-				DTO_sing dto = new DTO_sing(type1, point1);
-				
-				ct.musicQuiz(dto);
-				
+				while (true) {					
+					System.out.print("[1]발라드 [2]댄스 [3]동요 [4]POP >> ");
+					int type1 = sc.nextInt();
+					
+					// 난이도 선택
+					System.out.print("[25] [50] [75] [100] >> ");
+					int point1 = sc.nextInt();
+					DTO_sing dto = new DTO_sing(type1, point1);
+					int cnt = ct.musicQuiz(dto);
+					
+					if(cnt == 1) {
+						break;
+					}else {
+						continue;
+					}
+				}
 				System.out.print("정답을 입력하세요 (Hint: 1004 입력) >> ");
 				String title = sc.next();
-				DTO_sing dto2 = new DTO_sing(title);
-				ct.musicCheck(dto2);
+				DTO_sing dto = new DTO_sing(title);
+				ct.musicCheck(dto);
+				
 				
 				
 			}else if(select == 2) {
