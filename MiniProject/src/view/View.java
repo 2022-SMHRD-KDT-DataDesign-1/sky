@@ -61,11 +61,12 @@ public class View {
 				System.out.println("============================================================");
 				// 장르 선택
 				while (true) {
-					
+					System.out.println("장르를 선택하세요 [1]~[4]");
 					System.out.print("[1]발라드 [2]댄스 [3]동요 [4]POP >> ");
 					int type1 = sc.nextInt();
 					
 					// 난이도 선택
+					System.out.println("장르를 선택하세요 [25]~[100]");
 					System.out.print("[25] [50] [75] [100] >> ");
 					int point1 = sc.nextInt();
 					DTO_sing dto = new DTO_sing(type1, point1);
@@ -77,11 +78,13 @@ public class View {
 						DTO_sing dto2 = new DTO_sing(title);
 						ct.musicCheck(dto2);
 						gameCnt++;
+						ct.heart(gameCnt);
+						System.out.println("--------------------------------------------------------");
 					}else {
 						continue;
 					}
 					if(gameCnt > 2) {
-						System.out.println("GAME OVER");
+						System.out.println("기회 소진! GAME OVER ~~");
 						break;
 					}
 					
