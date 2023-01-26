@@ -41,9 +41,11 @@ public class Controller {
 
 	// 음악 퀴즈
 	MP3Player mp3 = new MP3Player();
+	String answer = null;
 
 	public void musicQuiz(DTO_sing dto) {
 		DTO_sing dto2 = dao_sing.musicQuiz(dto);
+		answer = dto2.getTitle();
 
 		if (dto2 == null) {
 			System.out.println("다시 입력해주세요.");
@@ -66,6 +68,16 @@ public class Controller {
 	}
 	
 	// 정답 확인
-
-
-}
+	public void musicCheck(DTO_sing dto2) {
+		if (mp3.isPlaying() == true) {
+			mp3.stop();
+		}
+		
+		
+	}
+		
+	
+	
+	
+	
+	}

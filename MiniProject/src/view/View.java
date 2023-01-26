@@ -69,8 +69,10 @@ public class View {
 				
 				ct.musicQuiz(dto);
 				
-				System.out.println("정답을 입력하세요>> ");
+				System.out.print("정답을 입력하세요 (Hint: 1004 입력) >> ");
 				String title = sc.next();
+				DTO_sing dto2 = new DTO_sing(title);
+				ct.musicCheck(dto2);
 				
 				
 			}else if(select == 2) {

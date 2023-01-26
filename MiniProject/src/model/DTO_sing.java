@@ -23,6 +23,10 @@ public class DTO_sing {
 		this.type1 = type1;
 		this.point1 = point1;
 	}
+	
+	public DTO_sing(String title) {
+		this.title = title;
+	}	
 
 	public String getTitle() {
 		return title;
