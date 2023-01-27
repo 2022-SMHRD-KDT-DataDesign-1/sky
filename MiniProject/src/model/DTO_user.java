@@ -8,6 +8,17 @@ public class DTO_user {
 	private int score;
 	private int max;
 	
+	private String loginID;
+	
+	
+	public String getLoginID() {
+		return loginID;
+	}
+	public DTO_user(int score, String loginID) {
+		super();
+		this.score = score;
+		this.loginID = loginID;
+	}
 	public DTO_user(String id, String pw, String name, int score, int max) {
 		this.id = id;
 		this.pw = pw;

@@ -241,6 +241,16 @@ public class Controller {
 
 	}
 
+	public void scoreInput(DTO_user dto4) {
+		int row = dao_user.scoreInput(dto4);
+		if (row > 0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
+		
+	}
+
 	
 	
 	

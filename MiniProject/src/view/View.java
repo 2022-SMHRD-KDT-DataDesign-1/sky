@@ -15,6 +15,8 @@ public class View {
 		Scanner sc = new Scanner(System.in);
 		Controller ct = new Controller();
 		MP3Player mp3 = new MP3Player();
+		String loginID = null;
+		int score = 0;
 		
 		while(true) {
 			System.out.println("\r\n"
@@ -62,6 +64,7 @@ public class View {
 			if(select == 1) {
 				System.out.print("ID를 입력해주세요 >> ");
 				String id = sc.next();
+				loginID = id;
 				System.out.print("PW를 입력해주세요 >> ");
 				String pw = sc.next();
 				DTO_user dto = new DTO_user(id,pw);
@@ -125,8 +128,8 @@ public class View {
 							System.out.print("정답을 입력하세요 >> ");
 							String title2 = sc.next();
 							DTO_sing dto2 = new DTO_sing(title2);
-
-							System.out.println("[나의 점수]: " + ct.musicCheck(dto2)); // 정답 확인
+							score = ct.musicCheck(dto2);
+							System.out.println("[나의 점수]: " + score); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
 							ct.heart(dto3); // 잔여 게임 횟수
@@ -134,8 +137,8 @@ public class View {
 							
 						}else {							
 							DTO_sing dto2 = new DTO_sing(title);
-
-							System.out.println("[나의 점수]: " + ct.musicCheck(dto2)); // 정답 확인
+							score = ct.musicCheck(dto2);
+							System.out.println("[나의 점수]: " + score); // 정답 확인
 							gameCnt++;
 							DTO_sing dto3 = new DTO_sing(gameCnt);
 							ct.heart(dto3); // 잔여 게임 횟수
@@ -185,6 +188,8 @@ public class View {
 								+ "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
 								+ "");
 						System.out.println("기회 소진! GAME OVER ~~");
+						DTO_user dto4 = new DTO_user(score, loginID);
+						ct.scoreInput(dto4);
 						break;
 					}
 					

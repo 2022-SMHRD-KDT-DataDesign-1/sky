@@ -82,6 +82,24 @@ public class DAO_user {
 		}
 		return row;
 	}
+	public int scoreInput(DTO_user dto4) {
+		int row = 0;
+		getCon();
+		try {
+			String sql = "update user_info set score = ? where id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto4.getScore());
+			psmt.setString(2, dto4.getLoginID());
+			row = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			getClose();
+		}
+		return row;
+	}
 	
 	
 	
