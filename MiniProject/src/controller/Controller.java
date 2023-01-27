@@ -258,13 +258,13 @@ public class Controller {
 			System.out.println((i + 1) + "위\t" + list.get(i).getName() + "(" + list.get(i).getId() + ")\t"
 					+ list.get(i).getMax());
 		}
-		System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 	}
 
 	public void myRank(DTO_user dto4) {
 
 		dto4 = dao_user.myRank(dto4);
 		System.out.println(dto4.getName() + "(" + dto4.getId() + ")님의 최고점수는 " + dto4.getMax() + "입니다.");
+	    System.out.println("★★★★★★★★★★★★★★★★★★★");
 
 	}
 
