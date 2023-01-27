@@ -94,8 +94,9 @@ public class Controller {
 
 	// 정답 확인
 	int n = 1;
+
 	public int musicCheck(DTO_sing dto2) {
-		if(n>3) {
+		if (n > 3) {
 			myScore = 0;
 			n = 1;
 		}
@@ -242,16 +243,29 @@ public class Controller {
 	}
 
 	public void scoreInput(DTO_user dto4) {
-		int row = dao_user.scoreInput(dto4);
-		if (row > 0) {
-			System.out.println("성공");
-		} else {
-			System.out.println("실패");
-		}
-		
+		dao_user.scoreInput(dto4);
 	}
 
-	
-	
-	
+	public void maxScore(DTO_user dto4) {
+		dao_user.maxScore(dto4);
+	}
+
+	public void rank() {
+		ArrayList<DTO_user> list = dao_user.rank();
+		System.out.println("================================");
+		System.out.println("순위    닉네임(아이디)    나의 점수");
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println((i + 1) + "위   " + list.get(i).getName() + "(" + list.get(i).getId() + ")    "
+					+ list.get(i).getMax());
+		}
+		System.out.println("--------------------------------");
+	}
+
+	public void myRank(DTO_user dto4) {
+
+		dto4 = dao_user.myRank(dto4);
+		System.out.println(dto4.getName() + "(" + dto4.getId() + ")님의 최고점수는 " + dto4.getMax() + "입니다.");
+
+	}
+
 }

@@ -9,8 +9,26 @@ public class DTO_user {
 	private int max;
 	
 	private String loginID;
+	private int rownum;
 	
 	
+	
+	public int getRownum() {
+		return rownum;
+	}
+	public DTO_user(String id, String name, int max) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.max = max;
+	}
+	public DTO_user(String id, String name, int max, int rownum) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.max = max;
+		this.rownum = rownum;
+	}
 	public String getLoginID() {
 		return loginID;
 	}

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAO_user {
 	Connection conn = null;
@@ -99,6 +100,77 @@ public class DAO_user {
 			getClose();
 		}
 		return row;
+	}
+	public int maxScore(DTO_user dto4) {
+		int row = 0;
+		getCon();
+		try {
+			String sql = "update user_info set max = ? where id = ? and (max is null or max < score)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, dto4.getScore());
+			psmt.setString(2, dto4.getLoginID());
+			row = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			getClose();
+		}
+		return row;
+	}
+	public ArrayList<DTO_user> rank() {
+		ArrayList<DTO_user> list = new ArrayList<>();
+		getCon();
+		try {
+			String sql = "SELECT * from ( select * from user_info where max is not null order by max desc) Where rownum <=5";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				int max = rs.getInt("max");
+				
+				DTO_user dto = new DTO_user(id, name, max);
+
+				list.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			getClose();
+		}
+		return list;
+	}
+	public DTO_user myRank(DTO_user dto4) {
+		getCon();
+		
+		try {
+			String sql = "select * from user_info where id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dto4.getLoginID());
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				int max = rs.getInt("max");
+				
+				dto4 = new DTO_user(id, name, max);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			getClose();
+
+		}
+		return dto4;
 	}
 	
 	

@@ -189,7 +189,10 @@ public class View {
 								+ "");
 						System.out.println("기회 소진! GAME OVER ~~");
 						DTO_user dto4 = new DTO_user(score, loginID);
-						ct.scoreInput(dto4);
+						ct.scoreInput(dto4); // 최종 점수를 전산에 저장
+						ct.maxScore(dto4); // 최대값 저장
+						ct.rank(); // 전체 랭킹 조회
+						ct.myRank(dto4);
 						break;
 					}
 					
@@ -199,7 +202,7 @@ public class View {
 				
 			}else if(select == 2) {
 				// 랭킹 확인
-				
+				ct.rank(); // 전체 랭킹 조회
 			}else if(select == 3) {
 				System.out.println("게임이 종료되었습니다. 감사합니다");
 				break;
