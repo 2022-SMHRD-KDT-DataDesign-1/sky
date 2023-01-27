@@ -252,13 +252,13 @@ public class Controller {
 
 	public void rank() {
 		ArrayList<DTO_user> list = dao_user.rank();
-		System.out.println("================================");
-		System.out.println("순위    닉네임(아이디)    나의 점수");
+		System.out.println("순위\t닉네임(아이디)\t나의 점수");
+		System.out.println("----------------------------------");
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println((i + 1) + "위   " + list.get(i).getName() + "(" + list.get(i).getId() + ")    "
+			System.out.println((i + 1) + "위\t" + list.get(i).getName() + "(" + list.get(i).getId() + ")\t"
 					+ list.get(i).getMax());
 		}
-		System.out.println("--------------------------------");
+		System.out.println("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 	}
 
 	public void myRank(DTO_user dto4) {
